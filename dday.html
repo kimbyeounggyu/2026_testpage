@@ -19,19 +19,46 @@
 </nav>
 <main class="container">
 <section>
-  <h2>About Me</h2>
-  <p>안녕하세요, 전자공학을 전공하며 하드웨어와 소프트웨어의 융합을 탐구하는 김병규입니다.</p>
-  <h3>학력</h3>
-  <ul>
-    <li>충암고등학교 졸업</li>
-    <li>광운대학교 전자공학과 재학 (4학년)</li>
-  </ul>
-  <h3>관심 분야 및 취미</h3>
-  <ul>
-    <li>반도체 소자 및 공정 기술</li>
-    <li>농구 및 풋살</li>
-    <li>바둑 및 퍼즐 맞추기</li>
-  </ul>
+ <section>
+  <h2>D-Day 계산기</h2>
+  <script>
+    // 3. 오늘 날짜 객체 생성
+    let now = new Date();
+
+    // 4. prompt()로 연도, 월, 일 입력받기
+    let yearStr = prompt("연도를 입력하세요 (예: 2026)");
+    let monthStr = prompt("월을 입력하세요 (1~12)");
+    let dayStr = prompt("일을 입력하세요 (1~31)");
+
+    // 5. 입력 취소 또는 빈 값 확인
+    if (!yearStr) {
+      document.write("계산을 취소했습니다.");
+    } else {
+      // 6. 문자열을 숫자형으로 변환
+      let year = parseInt(yearStr);
+      let month = parseInt(monthStr);
+      let day = parseInt(dayStr);
+
+      // 7. 목표 날짜 객체 생성 (월은 0부터 시작하므로 1을 뺌)
+      let targetDate = new Date(year, month - 1, day);
+
+      // 8. 두 날짜의 밀리초(ms) 차이 계산
+      let diffMs = targetDate.getTime() - now.getTime();
+
+      // 9. 밀리초를 일(day) 단위로 변환 후 올림 처리
+      let diffDay = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+      // 10. 조건에 따른 D-Day 결과 출력
+      if (diffDay === 0) {
+        document.write("D-Day");
+      } else if (diffDay > 0) {
+        document.write("D-" + diffDay);
+      } else {
+        document.write("D+" + Math.abs(diffDay));
+      }
+    }
+  </script>
+</section>
 </section>
 </main>
 <footer>
